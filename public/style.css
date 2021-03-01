@@ -10,7 +10,7 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: 64px auto;
+    grid-template-columns: 2fr auto 2fr;
     position: relative;
     align-content: center;
     
@@ -40,102 +40,11 @@ h1 {
     height: 64px;
 }
 
-#content {
-    margin-top: 35px;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr 65.4vw 1fr;
-    grid-template-rows: 2fr;
-    row-gap: 5px;
+#logo img {
+    width: 64px;
+    height: 64px;
 }
 
-input[type="text"] {
-    width: 200px;
-}
-
-
-
-#pic-holder {
-    grid-row-start: 1;
-    grid-column-start: 2;
-    display: grid;
+.button {
     
-    justify-content: center;
-    align-content: center;
-
-    width: 65vw;
-    height: 65vh;
-
-    border: 3px dashed white;
 }
-
-#pic-holder #pic {
-    display: grid;
-    max-width: 65vw;
-    max-height: 65vh;
-}
-
-#pic-text {
-    font-size: 64px;
-    color: white;
-}
-
-#meme-type-label {
-    grid-row-start: 2;
-    grid-column-start: 2;
-
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    margin: 0;
-    color: white;
-}
-
-select {
-    grid-row-start: 3;
-    grid-column-start: 2;
-
-    background: rgba(255, 255, 255, 0.35);
-    color: black;
-    padding: 6px;
-    border: none;
-    font: 600 1.20rem/1.25 'Montserrat', sans-serif;
-    box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
-    border: 3px solid white;
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
-    font-size: 16px;
-    transition: all 1s ease-in;
-}
-
-select:hover {
-    border: solid rgb(0, 255, 0) 3px;
-    background: rgba(0, 255, 0, 0.35);
-}
-
-
-#meme-button {
-    grid-row-start: 4;
-    grid-column-start: 2;
-
-    padding: 12px;
-    border: solid rgb(255,255,255) 3px;
-    background: rgba(255, 255, 255, 0.35);
-    cursor:pointer;
-    transition: all 1s ease-in;
-    outline:none;
-    box-shadow: none;
-
-    height: 8vh;
-    font-size: 3.25vh;
-}
-
-#meme-button:hover {
-    background: rgba(0, 255, 0, 0.35);
-    border: solid rgb(0, 255, 0) 3px;
-}
-
-
-
-
-

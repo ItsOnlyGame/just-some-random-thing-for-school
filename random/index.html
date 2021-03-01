@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>MOI</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="./handler.js"></script>
+
+    </head>
+
+
+
+    <body>
+        <header>
+            <a href="/"><img id="logo" src="./res/61OU9AmlkqL.png"></a>
+            <h1 id="header-title">memes for days</h1>
+        </header>
+
+        <div id="content">
+            <div id="pic-holder">
+                <p id="pic-text"></p>
+                <img id="pic">
+            </div>
+
+            <label for="meme-type" id="meme-type-label">Image type: </label>
+            <select id="meme-type">
+                <option value="meme">Meme</option>
+                <option value="wallpaper">Wallpaper</option>
+                <option value="custom" disabled>Custom</option>
+            </select>
+
+            
+            <input id="meme-button" type="button" value="Press the button" onclick="execute(); this.blur();">
+        </div>
+
+    </body>
+    
+
+</html>
