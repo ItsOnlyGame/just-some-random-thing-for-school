@@ -1,8 +1,10 @@
 async function execute() {
-    const text = document.getElementById("pic-text");
+    const loading_text = document.getElementById("pic-loading");
+    const info_text = document.getElementById("pic-info");
     const image = document.getElementById("pic");
+
     image.src = "";
-    text.innerHTML = "Loading...";
+    loading_text.innerHTML = "Loading...";
 
     const type = document.getElementById("meme-type");
     const data = {
@@ -19,8 +21,14 @@ async function execute() {
     const response = await fetch('/api', options)
     const json = await response.json();
 
+
+    console.log(json);
+
     image.src = json.image.image;
-    text.innerHTML = "";
+    loading_text.innerHTML = "";
+    info_text.innerHTML = json.image.postLink;
+    info_text.href = json.image.postLink;
+
 }
 
 

@@ -5,9 +5,14 @@ const redditImageFetcher = require('reddit-image-fetcher');
 const app = express();
 app.listen(80, () => console.log('listening at port 80'));
 
-app.use('/', express.static("public"))
+
+app.use('/', express.static("main"))
 app.use('/random', express.static('random'));
 app.use('/rater', express.static('rater'))
+
+
+app.use(express.static('public'));
+
 app.use(express.json());
 
 app.post('/api', (request, response) => {
