@@ -1,8 +1,7 @@
-const { urlencoded } = require('express');
 const express = require('express');
 const redditImageFetcher = require('reddit-image-fetcher');
 
-var PORT = 4000;
+var PORT = process.env.PORT || 4000;
 
 const app = express();
 app.listen(PORT, () => console.log(`listening at port ${PORT}`));
