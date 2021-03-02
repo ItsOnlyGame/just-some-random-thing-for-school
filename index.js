@@ -2,13 +2,15 @@ const { urlencoded } = require('express');
 const express = require('express');
 const redditImageFetcher = require('reddit-image-fetcher');
 
+var PORT = 4000;
+
 const app = express();
-app.listen(80, () => console.log('listening at port 80'));
+app.listen(PORT, () => console.log(`listening at port ${PORT}`));
 
 
-app.use('/', express.static("main"))
-app.use('/random', express.static('random'));
-app.use('/rater', express.static('rater'))
+app.use('/', express.static("Webpages/main"))
+app.use('/meme-generator', express.static('Webpages/meme-generator'));
+app.use('/rater', express.static('Webpages/rater'))
 
 
 app.use(express.static('public'));

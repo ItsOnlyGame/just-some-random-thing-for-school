@@ -20,11 +20,25 @@ h1 {
     align-self: center;
 
     cursor: pointer;
-    transition: all 1s ease-in;
     outline: none;
     box-shadow: none;
 
     height: auto !important;
     width: 300px !important;
+    font-size: 18px;
+}
+
+#github {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 30px;
+
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+
+    height: auto !important;
+    width: auto !important;
     font-size: 18px;
 }
