@@ -12,27 +12,20 @@ app.use('/meme-generator', express.static('Webpages/meme-generator'));
 app.use('/rater', express.static('Webpages/rater'))
 
 
-app.use(express.static('public'));
-
+app.use('/memes', express.static('public'));
 app.use(express.json());
 
 app.post('/api', (request, response) => {
-    if (request.body.type == 'custom') {
-        redditImageFetcher.fetch({
-            type: 'meme',
-            total: 50, 
-            addSubreddit: ['memes', 'funny'], 
-            removeSubreddit: ['dankmemes']
-        }).then((images) => {
-            
-        }); 
-
-    } else {
-        redditImageFetcher.fetch({type: request.body.type}).then((img) => {
-            response.json({
-                status: "Success",
-                image: img[0]
-            });
+    redditImageFetcher.fetch({
+        type: 'meme',
+        total: 1, 
+        subreddit: ['memes', 'funny'], 
+    }).then((img) => {
+        response.json({
+            status: "Success",
+            image_url: img[0].image,
+            reddit_url:img[0].postLink,
+            id: img[0].subreddit+img[0].id,
         });
-    }
+    });
 });

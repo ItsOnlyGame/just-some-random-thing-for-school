@@ -1,7 +1,8 @@
+var current_meme_id = "";
+
 async function execute() {
-    const loading_text = document.getElementById("pic-loading");
-    const info_text = document.getElementById("pic-info");
-    const image = document.getElementById("pic");
+    const loading_text = document.getElementById("meme-loading");
+    const image = document.getElementById("meme");
 
     image.src = "";
     loading_text.innerHTML = "Loading...";
@@ -15,16 +16,12 @@ async function execute() {
     const response = await fetch('/api', options)
     const json = await response.json();
 
+    console.log(json)
+    
+    current_meme_id = json.id;
 
     image.src = json.image_url;
     loading_text.innerHTML = "";
-    info_text.innerHTML = json.reddit_url;
-    info_text.href = json.reddit_url;
 }
 
-
-document.addEventListener('keypress', (e) => {
-    if (e.key == ' ') {
-        execute();
-    }
-});
+execute();

@@ -2,16 +2,16 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>MOI</title>
+        <title>Just a random webpage</title>
         <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="/res/GlobalStyles.css">
+        <link rel="stylesheet" href="/memes/res/GlobalStyles.css">
     </head>
 
 
 
     <body>
         <header>
-            <a id="home-button" href="/"><img src="/res/61OU9AmlkqL.png"></a>
+            <a id="home-button" href="/"><img src="/memes/res/61OU9AmlkqL.png"></a>
             
             <div id="tabs"> 
                 <a id="tabs-home" class="tab" href="/">HOME</a>
@@ -21,16 +21,16 @@
         </header>
 
         <div class="content">
-            <button class="arrow arrow-button" id="up-vote"><image src="/res/arrow.png"></image></button>
-            <button class="arrow flip-y arrow-button" id="down-vote"><image src="/res/arrow.png"></image></button>
+            <button class="arrow arrow-button" id="up-vote"><image src="/memes/res/arrow.png"></image></button>
+            <button class="arrow flip-y arrow-button" id="down-vote"><image src="/memes/res/arrow.png"></image></button>
             <button class="button" id="bnt-skip">Skip</button>
 
             <div id="image-div">
-                <image src=""></image>
+                <p id="meme-loading"></p>
+                <img id="meme"></img>
             </div>
         </div>
+        <script src="./handler.js"></script>
 
     </body>
-    
-
 </html>

@@ -6,6 +6,8 @@
 
     height: 200px;
     width: 200px;
+    
+    margin: 20px;
 
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -31,7 +33,18 @@
 }
 
 .arrow-button {
+    cursor: pointer;
     border: 2px solid rgba(0, 255, 0, 0.65);
+}
+
+.arrow-button:hover {
+    background: rgba(0, 255, 0, 0.35);
+    border: 2px solid rgba(0, 255, 0, 0.65);
+}
+
+.arrow-button:active {
+    background: rgba(0, 199, 0, 0.35);
+    border: solid rgb(0, 255, 0) 2px;
 }
 
 #up-vote {
@@ -50,11 +63,25 @@
 }
 
 #image-div {
+    display: grid;
     grid-column: 2;
     grid-row: 2;
 
     width: 65vw;
     height: 65vh;
 
+    justify-content: center;
+    align-content: center;
+
     border: 3px dashed white;
+}
+
+#image-div #meme {
+    max-width: 65vw;
+    max-height: 65vh;
+}
+
+#meme-loading {
+    font-size: 64px;
+    color: white;
 }
