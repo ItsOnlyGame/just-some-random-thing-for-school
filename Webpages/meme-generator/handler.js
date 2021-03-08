@@ -12,7 +12,7 @@ async function execute() {
             'Content-Type': 'application/json'
         },
     };
-    const response = await fetch('/api', options)
+    const response = await fetch('/api/meme', options)
     const json = await response.json();
 
 
