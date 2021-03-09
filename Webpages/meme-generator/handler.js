@@ -40,9 +40,11 @@ async function execute() {
     info_text.href = meme.reddit_url;
 }
 
+execute();
 
 document.addEventListener('keypress', (e) => {
     if (e.key == ' ') {
         execute();
     }
 });
+
