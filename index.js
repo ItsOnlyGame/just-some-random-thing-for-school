@@ -58,7 +58,6 @@ db.loadDatabase();
 db.persistence.setAutocompactionInterval(30000);
 
 app.post('/api/rate', (request, response) => {
-    console.log(request.body);
 
     const data = {
         vote: request.body.vote,
@@ -80,5 +79,13 @@ app.post('/api/rate', (request, response) => {
     response.json({
         status: "Success"
     });
-    db.save
+});
+
+app.post('/api/rate/score', (request, response) => {
+    db.findOne({id: request.body.id}, {upsert: true}, (err, doc) => {
+        response.json({
+            status: "Success",
+            score: (doc == null ? 0 : doc.vote)
+        });
+    })
 });
