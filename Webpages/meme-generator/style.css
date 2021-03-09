@@ -9,7 +9,7 @@
     width: 65vw;
     height: 65vh;
 
-    border: 3px dashed white;
+    border: 3px dashed rgba(10, 120, 175, 0.2);
 }
 
 #pic-holder #pic {
@@ -20,7 +20,7 @@
 
 #pic-loading {
     font-size: 64px;
-    color: black;
+    color: rgb(40, 40, 40);
 }
 
 #under-content {
@@ -34,7 +34,7 @@
     grid-row-start: 1;
 
     font-size: 16px;
-    color: black;
+    color: rgb(40, 40, 40);
 
     align-self: right;
     justify-self: right;

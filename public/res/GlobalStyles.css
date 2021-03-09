@@ -2,10 +2,11 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 0; 
     padding: 0;
- }
-
+    letter-spacing: 0.4px;
+}
+ 
 body {
-    background: linear-gradient(to left, rgb(79, 223, 139), rgb(42, 212, 56));
+    background: linear-gradient(to left, rgb(80, 192, 220), rgb(83, 136, 185));
 }
 
 header {
@@ -16,8 +17,8 @@ header {
     align-content: center;
     justify-content: center;
 
-    background-color: rgba(52, 182, 69, 0.45);
-    border-bottom: 2px solid rgba(52, 182, 69, 0.856);
+    background-color: rgba(60, 171, 223, 0.5);
+    border-bottom: 2px solid rgba(60, 171, 223, 0.75);
     width: 100%;
     height: 80px;
     border-radius: 0;
@@ -36,8 +37,8 @@ header {
 .tab {
     text-decoration: none;
 
-    border: 2px solid rgba(0, 255, 0, 0.25);
-    background-color: rgba(52, 182, 69, 0.25);
+    border: 2px solid rgba(0, 155, 175, 0.5);
+    background-color: rgba(50, 160, 180, 0.25);
     color: rgb(40, 40, 40);
 
     padding: 10px 20px;
@@ -46,8 +47,8 @@ header {
 }
 
 .tab:hover {
-    background-color: rgba(52, 182, 69, 0.25);
-    border: 2px solid rgba(0, 255, 0, 0.65);
+    border: 2px solid rgba(0, 155, 175, 0.75);
+    background: rgba(50, 160, 180, 0.5);
 }
 
 
@@ -68,8 +69,8 @@ header {
 
 .button {
     padding: 12px;
-    border: 2px solid rgba(0, 175, 0, 0.5);
-    background: rgba(52, 182, 69, 0.25);
+    border: 2px solid rgba(0, 155, 175, 0.5);
+    background: rgba(50, 160, 180, 0.25);
     cursor: pointer;
     outline: none;
     box-shadow: none;
@@ -81,8 +82,8 @@ header {
 }
 
 .button:hover {
-    background: rgba(0, 255, 0, 0.35);
-    border: solid rgb(0, 255, 0) 2px;
+    border: 2px solid rgba(0, 155, 175, 0.75);
+    background: rgba(50, 160, 180, 0.5);
 }
 
 .button:active {
@@ -95,7 +96,7 @@ header {
 
 .select {
     background: rgba(255, 255, 255, 0.35);
-    color: black;
+    color: rgb(40, 40, 40);
     border: 3px solid white;
     box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
 
