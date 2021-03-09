@@ -87,8 +87,8 @@ header {
 }
 
 .button:active {
-    background: rgba(0, 199, 0, 0.35);
-    border: solid rgb(0, 255, 0) 2px;
+    border: 2px solid rgba(0, 155, 175, 1);
+    background: rgba(50, 160, 180, 0.75);
 }
 
 

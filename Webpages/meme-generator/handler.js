@@ -1,9 +1,9 @@
 const meme_queue = [];
 
 async function execute() {
-    const loading_text = document.getElementById("pic-loading");
-    const info_text = document.getElementById("pic-info");
-    const image = document.getElementById("pic");
+    const loading_text = document.getElementById("meme-loading");
+    const info_text = document.getElementById("meme-info");
+    const image = document.getElementById("meme");
 
     image.src = "";
     loading_text.innerHTML = "Loading...";

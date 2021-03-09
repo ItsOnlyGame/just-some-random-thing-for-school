@@ -57,6 +57,12 @@ document.getElementById("bnt-skip").addEventListener('click', () => {
 });
 
 
+const meme = document.getElementById("meme_url");
+meme.addEventListener('click', () => {
+    meme.href = document.getElementById("meme").src;
+});
+
+
 async function vote(vote_type) {
     if (current_meme_id === '' || current_meme_url === '') return;
 

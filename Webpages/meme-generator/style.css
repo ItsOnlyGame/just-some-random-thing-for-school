@@ -1,5 +1,5 @@
 
-#pic-holder {
+#meme-holder {
     grid-row-start: 1;
     display: grid;
     
@@ -12,13 +12,13 @@
     border: 3px dashed rgba(10, 120, 175, 0.2);
 }
 
-#pic-holder #pic {
+#meme-holder #meme {
     display: grid;
     max-width: 65vw;
     max-height: 65vh;
 }
 
-#pic-loading {
+#meme-loading {
     font-size: 64px;
     color: rgb(40, 40, 40);
 }
@@ -29,7 +29,7 @@
     padding-top: 4px;
 }
 
-#pic-info {
+#meme-info {
     grid-column-start: 2;
     grid-row-start: 1;
 
