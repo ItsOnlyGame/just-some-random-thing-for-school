@@ -1,5 +1,4 @@
-var current_meme_id = "";
-var current_meme_url = "";
+var currentMeme;
 
 const meme_queue = [];
 
@@ -21,8 +20,9 @@ async function new_meme() {
             };
             const response = await fetch('/api/meme', options)
             const json = await response.json();
-                
-            json.memes.forEach(meme => {
+            
+
+            json.data.forEach(meme => {
                 meme_queue.push(meme);
             });
             resolve();
@@ -34,17 +34,15 @@ async function new_meme() {
     }
 
     const meme = meme_queue.pop();
-    
-    current_meme_id = meme.id;
-    current_meme_url = meme.image_url;
+    currentMeme = meme;
 
     setMemeScore();
 
-    image.src = meme.image_url;
+    image.src = meme.imageUrl;
     loading_text.innerHTML = "";
 
-    info_text.innerHTML = meme.reddit_url;
-    info_text.href = meme.reddit_url;
+    info_text.innerHTML = meme.redditUrl;
+    info_text.href = meme.redditUrl;
 }
 
 new_meme();
@@ -70,12 +68,11 @@ meme.addEventListener('click', () => {
 
 
 async function vote(vote_type) {
-    if (current_meme_id === '' || current_meme_url === '') return;
+    if (currentMeme === undefined) return;
 
     const data = {
         vote: vote_type,
-        id: current_meme_id,
-        url: current_meme_url,
+        meme: currentMeme
     };
 
     const options = {
@@ -85,16 +82,15 @@ async function vote(vote_type) {
         },
         body: JSON.stringify(data)
     };
-    const response = await fetch('/api/rate', options);
+    const response = await fetch('/api/vote', options);
     response.json();
     new_meme();
 }
 
 async function setMemeScore() {
     const data = {
-        id: current_meme_id,
-    };
-
+        id: currentMeme.memeId
+    }
     const options = {
         method: 'POST',
         headers: {
@@ -102,8 +98,11 @@ async function setMemeScore() {
         },
         body: JSON.stringify(data)
     };
-    const response = await fetch('/api/rate/score', options);
+
+    const response = await fetch('/api/scoreboard/get', options);
     const json = await response.json();
 
-    document.getElementById("score-info").innerHTML = `Score: ${json.score}`;
+    console.log(json)
+
+    document.getElementById("score-info").innerHTML = `Score: ${json.data}`;
 }

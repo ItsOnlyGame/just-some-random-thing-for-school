@@ -44,6 +44,7 @@ header {
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
+    text-transform: uppercase;
 }
 
 .tab:hover {

@@ -12,14 +12,15 @@ app.listen(PORT, () => console.log(`listening at port ${PORT}`));
 *   Webpages folder holds every webpage on the website
 */
 app.use('/', express.static("Webpages/main"))
-app.use('/meme-generator', express.static('Webpages/meme-generator'));
-app.use('/rater', express.static('Webpages/rater'))
+app.use('/meme-review', express.static('Webpages/meme-review'))
+app.use('/scoreboard', express.static('Webpages/scoreboard'))
 
 // Public data used on every page
 app.use('/memes', express.static('public'));
 
 // Set fetch format to json so it's easily read
 app.use(express.json());
+
 
 app.post('/api/meme', (request, response) => {
     redditImageFetcher.fetch({
@@ -32,60 +33,71 @@ app.post('/api/meme', (request, response) => {
 
         memes.forEach(meme => {
             array.push({
-                image_url: meme.image,
-                reddit_url:meme.postLink,
-                id: meme.subreddit+':'+meme.id,
+                name: meme.title,
+                imageUrl: meme.image,
+                redditUrl:meme.postLink,
+                memeId: meme.subreddit+':'+meme.id,
             })
         });
 
-
-        response.json({
-            status: "Success",
-            memes: array,
-        });
-
+        respond(response, array);
     }).catch((err) => {
-        console.log(err)
-        response.json({
-            status: "Error",
-            error: err
-        });
+        respond(response, err, false);
     });
 });
 
+/**
+ * Load database to memory
+ * Compact database file content every 30 000ms (30s)
+ */
 const db = new Datastore('datastore.db');
 db.loadDatabase();
 db.persistence.setAutocompactionInterval(30000);
 
-app.post('/api/rate', (request, response) => {
-
+app.post('/api/vote', (request, response) => {
     const data = {
         vote: request.body.vote,
-        id: request.body.id,
-        url: request.body.url,
+        meme: request.body.meme
     };
 
     db.findOne({id: data.id}, {upsert: true}, (err, doc) => {
         if (doc == null) { //No match, so this meme has now yet been reviewed
-            data.vote = (data.vote === 'up' ? 1 : -1);
-            db.insert(data);
+            data.meme.score = (data.vote === 'up' ? 1 : -1);
+            db.insert(data.meme);
         } else {
-            data.vote = (data.vote === 'up' ? 1 : -1) + doc.vote;
-            db.update({ id: data.id }, data);
+            data.meme.score = (data.vote === 'up' ? 1 : -1) + doc.score;
+            db.update({ id: data.meme.id }, data.meme);
         }
     })
 
-
-    response.json({
-        status: "Success"
-    });
+    respond(response, undefined);
 });
 
-app.post('/api/rate/score', (request, response) => {
+app.post('/api/scoreboard/get', (request, response) => {
+    console.log(request.body)
     db.findOne({id: request.body.id}, {upsert: true}, (err, doc) => {
-        response.json({
-            status: "Success",
-            score: (doc == null ? 0 : doc.vote)
-        });
+        respond(response, (doc == null ? 0 : doc.vote));
     })
 });
+
+app.post('/api/scoreboard/top10', (request, response) => {
+    db.find({}, function (err, docs) {
+        if (err) {
+            respond(response, err, false);
+            return;
+        }
+
+        var sorted = docs.sort((a, b) => b.vote - a.vote);
+        const top10 = sorted.splice(0, 10);
+
+        respond(response, top10);
+    });
+
+});
+
+function respond(response, data, success = true) {
+    response.json({
+        status: success ? "Success" : "Error",
+        data: data
+    });
+}
