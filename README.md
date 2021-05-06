@@ -1,4 +1,4 @@
-# just-some-random-thing-for-school
+# Just some random thing for school
 This is a website that fetches meme from reddit 
 
 ### Want to run it?
